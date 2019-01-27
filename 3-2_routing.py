@@ -16,6 +16,11 @@ def hello():
 def get_profile(username):
     return 'profile : ' + username
 
+@app.route('/message/<int:message_id>')
+def get_message(message_id):
+    return 'message_id : %d' %message_id
+
+
 
 
 if __name__ == '__main__':

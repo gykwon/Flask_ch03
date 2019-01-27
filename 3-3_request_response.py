@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+
+from flask import Flask, url_for, request, render_template, make_response
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    response = make_response(render_template('index.html', foo=42))
+    response.headers['X-Parachutes'] =  'parachutes are cool'
+    return response
+
+
+@app.route('/hello')
+def hello_flask():
+    return '3-2 Hello Flask!!'
+
+@app.route('/hello/')
+def hello():
+    return '/hello/flask!!'
+
+@app.route('/profile/<username>')
+def get_profile(username):
+    return 'profile : ' + username
+
+@app.route('/profile_method', methods=['POST','GET'])
+def profile(username=None):
+    error = None
+    if request.method =='POST':
+        username = request.form['username']
+#username_get = request.args.get['username']
+        email = request.form['email']
+#if not username and not email:
+#    return add_profile(request.form)
+    else:
+        error = 'Invalid username or email'
+
+    return render_template('profile.html', error=error,username='dost.best',email='dost.best@kakaopaycorp.com')
+    #url 호출 시 username 과 email 을 get, post  방식별로 어떻게 던져주지??
+
+@app.route('/message/<int:message_id>')
+def get_message(message_id):
+    return 'message_id : %d' %message_id
+
+
+
+
+if __name__ == '__main__':
+    with app.test_request_context():
+        print(url_for('hello'))
+        print(url_for('get_profile', username='flask'))
+
+    app.run()
