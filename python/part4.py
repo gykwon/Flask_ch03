@@ -32,6 +32,6 @@ print(a[len(a)-4:])
 #a[:-4] = "Good Mor"
 #a[-4:] = "ning"
 
-#7. 다음 코드가 출력하는 결과는? 5, byte를 세는 함수는?
+#7. 다음 코드가 출력하는 결과는? 5, byte를 세는 함수는? sys.getsizeof()
 print(len('안녕하세요'))
 

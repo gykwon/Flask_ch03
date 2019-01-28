@@ -27,14 +27,20 @@ def profile(username=None):
     error = None
     if request.method =='POST':
         username = request.form['username']
-#username_get = request.args.get['username']
         email = request.form['email']
-#if not username and not email:
-#    return add_profile(request.form)
-    else:
-        error = 'Invalid username or email'
 
-    return render_template('profile.html', error=error,username='dost.best',email='dost.best@kakaopaycorp.com')
+    if request.method == 'GET':
+        username = request.args.get('username')
+        email = request.args.get('email')
+        print(username)
+        print(email)
+
+
+
+
+    error = 'Invalid username or email'
+
+    return render_template('profile.html', error=error,username=username, email=email)
     #url 호출 시 username 과 email 을 get, post  방식별로 어떻게 던져주지??
 
 @app.route('/message/<int:message_id>')
