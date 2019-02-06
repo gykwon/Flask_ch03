@@ -19,7 +19,35 @@ else:
 
 #4. 별찍기
 for i in range(1,6):
-    for j in range(1,6):
-        print('*')
+    print('*'*i)
 
+
+for i in range(1,6):
+    for j in range(i):
+        print('*' , end='')
+    print()
 #5.
+
+for i in range(5,0,-1):
+    print('*' * i)
+
+
+for i in range(5,0,-1):
+    for j in range(i):
+        print('*', end='')
+    print()
+
+
+
+x = int(input("몇 줄 출력할까요??"))
+
+for i in range(1,x+1):
+    for j in range(i):
+        print('*',end='')
+    print()
+
+
+
+y = int(input("몇 줄 출력할까??"))
+for i in range(1,y+1):
+    print('*' * i)
